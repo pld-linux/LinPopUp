@@ -4,6 +4,6 @@ Comment=Linux enhanced port of winpopup
 Comment[pl]=Port programu winpopup pod Linuxa
 Icon=LinPopUp.png
 Exec=LinPopUp
-Terminal=0
+Terminal=false
 Type=Application
 # vi: encoding=utf-8
