@@ -38,7 +38,7 @@ cd src
 make \
 	DESTDIR="" \
 	PREFIX="/usr/X11R6" \
-	DOC_DIR="/usr/share/doc/%{name}-%{version}" \
+	DOC_DIR="%{_defaultdocdir}/%{name}-%{version}" \
 	INSTALL_MANPATH='$(DESTDIR)/$(PREFIX)/share/man' \
 	DATA_DIR='$(DESTDIR)/var/state/linpopup' \
 	CFLAGS="$RPM_OPT_FLAGS " \
@@ -53,7 +53,7 @@ install -d $RPM_BUILD_ROOT/{usr/X11R6/{bin,share/{man/man1,linpopup}},var/state/
 	PREFIX="/usr/X11R6" \
 	INSTALL_MANPATH='$(DESTDIR)/$(PREFIX)/share/man' \
 	DATA_DIR='$(DESTDIR)/var/state/linpopup' \
-	DOC_DIR="$RPM_BUILD_ROOT//usr/share/doc/%{name}-%{version}" )
+	DOC_DIR="$RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}-%{version}" )
 
 rm -f $RPM_BUILD_ROOT/usr/X11R6/share/man/man1/linpopup.1
 echo ".so LinPopUp.1" >$RPM_BUILD_ROOT/usr/X11R6/share//man/man1/linpopup.1
@@ -61,7 +61,7 @@ echo ".so LinPopUp.1" >$RPM_BUILD_ROOT/usr/X11R6/share//man/man1/linpopup.1
 #rm -f $RPM_BUILD_ROOT/usr/sahre/doc/%{name}-%{version}/{COPYING,INSTALL,MANUAL}
 
 gzip -9nf $RPM_BUILD_ROOT/usr/X11R6/share/man/man1/* 
-#	$RPM_BUILD_ROOT/usr/share/doc/%{name}-%{version}/*
+#	$RPM_BUILD_ROOT%{_defaultdocdir}/%{name}-%{version}/*
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -69,7 +69,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 #%doc AUTHORS.gz BUGS.gz NEWS.gz THANKS.gz docs/*
-%doc /usr/share/doc/%{name}-%{version}
+%doc %{_defaultdocdir}/%{name}-%{version}
 
 %dir /var/state/linpopup
 
