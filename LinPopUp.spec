@@ -18,17 +18,18 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		_mandir		%{_prefix}/man
 
 %description
-LinPopUp is a Xwindow graphical port of Winpopup, running over Samba. It
-permits to communicate with a windows computer that runs Winpopup, sending
-or receiving message. (It also provides an alternative way to communicate
-between Linux computers that run Samba). Please note that LinPopUp is not
-only a port, as it includes several enhanced features. Also note that it
-requires to have Samba installed to be fully functionnal.
+LinPopUp is a Xwindow graphical port of Winpopup, running over Samba.
+It permits to communicate with a windows computer that runs Winpopup,
+sending or receiving message. (It also provides an alternative way to
+communicate between Linux computers that run Samba). Please note that
+LinPopUp is not only a port, as it includes several enhanced features.
+Also note that it requires to have Samba installed to be fully
+functionnal.
 
 %description -l pl
 LinPopUp umo¿liwia wysy³anie krótkich kominikatów tekstowych przy
-wykorzystaniu Samby. Pozwala na komunikacjê z osobami pos³uguj±cymi siê
-Winpopup'em.
+wykorzystaniu Samby. Pozwala na komunikacjê z osobami pos³uguj±cymi
+siê Winpopup'em.
 
 %prep
 %setup -q
