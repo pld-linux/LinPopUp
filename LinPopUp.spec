@@ -1,7 +1,7 @@
 Summary:	Linux enhanced port of winpopup
 Summary(pl):	Port winpopup'a pod Linux'a
 Name:		LinPopUp
-Version:	1.0.0
+Version:	1.0.1
 Release:	1
 Copyright:	GPL
 Group:		X11/Applications/Networking
@@ -15,6 +15,8 @@ BuildPrereq:	gtk+-devel
 BuildPrereq:	XFree86-devel
 Requires:	samba
 BuildRoot:	/tmp/%{name}-%{version}-root
+
+%define _prefix /usr/X11R6
 
 %description
 LinPopUp is a Xwindow graphical port of Winpopup, running over Samba. It
@@ -35,50 +37,51 @@ Winpopup'em.
 
 %build
 cd src
-make \
-	DESTDIR="" \
-	PREFIX="/usr/X11R6" \
+make 	DESTDIR="" \
+	PREFIX="%{_prefix}" \
 	DOC_DIR="%{_defaultdocdir}/%{name}-%{version}" \
-	INSTALL_MANPATH='$(DESTDIR)/$(PREFIX)/share/man' \
+	INSTALL_MANPATH='$(DESTDIR)%{_mandir}' \
 	DATA_DIR='$(DESTDIR)/var/state/linpopup' \
 	CFLAGS="$RPM_OPT_FLAGS " \
 	LDFLAGS="-s"
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT/{usr/X11R6/{bin,share/{man/man1,linpopup}},var/state/linpopup}
+install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1,%{_datadir}/linpopup}
 
 (cd src; make install \
 	DESTDIR="$RPM_BUILD_ROOT" \
-	PREFIX="/usr/X11R6" \
-	INSTALL_MANPATH='$(DESTDIR)/$(PREFIX)/share/man' \
+	PREFIX="%{_prefix}" \
+	INSTALL_MANPATH='$(DESTDIR)%{_mandir}' \
 	DATA_DIR='$(DESTDIR)/var/state/linpopup' \
-	DOC_DIR="$RPM_BUILD_ROOT/%{_defaultdocdir}/%{name}-%{version}" )
+	DOC_DIR="$RPM_BUILD_ROOT%{_defaultdocdir}/%{name}-%{version}" )
 
-rm -f $RPM_BUILD_ROOT/usr/X11R6/share/man/man1/linpopup.1
-echo ".so LinPopUp.1" >$RPM_BUILD_ROOT/usr/X11R6/share//man/man1/linpopup.1
+rm -f $RPM_BUILD_ROOT%{_mandir}/man1/linpopup.1
+echo ".so LinPopUp.1" >$RPM_BUILD_ROOT%{_mandir}/man1/linpopup.1
 
 #rm -f $RPM_BUILD_ROOT/usr/sahre/doc/%{name}-%{version}/{COPYING,INSTALL,MANUAL}
 
 gzip -9nf $RPM_BUILD_ROOT/usr/X11R6/share/man/man1/* 
-#	$RPM_BUILD_ROOT%{_defaultdocdir}/%{name}-%{version}/*
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-#%doc AUTHORS.gz BUGS.gz NEWS.gz THANKS.gz docs/*
 %doc %{_defaultdocdir}/%{name}-%{version}
 
 %dir /var/state/linpopup
 
-%attr(755,root,root) /usr/X11R6/bin/*
+%attr(755,root,root) %{_bindir}/*
 %attr(666,nobody,nobody) /var/state/linpopup/messages.dat
-/usr/X11R6/share/man/man1/*
-/usr/X11R6/share/LinPopUp
+%{_mandir}/man1/*
+%{_datadir}/LinPopUp
 
 %changelog
+* Fri May 28 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+  [1.0.1]
+- added using more rpm macres in spec.
+
 * Fri Mar 19 1999 Artur Frysiak <wiget@pld.org.pl>
   [0.9.9-1]
 - add LinPopUp-prefix.patch: allow build rpm with no-root account
