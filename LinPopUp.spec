@@ -25,7 +25,7 @@ requires to have Samba installed to be fully functionnal.
 
 %description -l pl
 LinPopUp umo¿liwia wysy³anie krótkich kominikatów tekstowych przy
-wykorzystaniu Samby. Pozwala na kominikacje z osobami pos³uguj±cymi siê
+wykorzystaniu Samby. Pozwala na komunikacjê z osobami pos³uguj±cymi siê
 Winpopup'em.
 
 %prep
