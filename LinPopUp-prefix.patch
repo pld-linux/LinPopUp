@@ -1,0 +1,18 @@
+--- LinPopUp-0.9.9/src/Makefile.old	Sat Mar 13 13:54:39 1999
++++ LinPopUp-0.9.9/src/Makefile	Fri Mar 19 10:44:24 1999
+@@ -11,9 +11,10 @@
+ VERSION_DATE = 1999
+ DESTDIR = /usr/local
+-INSTALL_BINPATH = $(DESTDIR)/bin
+-INSTALL_MANPATH = $(DESTDIR)/man
+-DOC_DIR = $(DESTDIR)/doc/$(PROGNAME)-$(VERSION)
+-SHARE_DIR = $(DESTDIR)/share/$(PROGNAME)
+-DATA_DIR = /var/lib/linpopup
++PREFIX = 
++INSTALL_BINPATH = $(DESTDIR)/$(PREFIX)/bin
++INSTALL_MANPATH = $(DESTDIR)/$(PREFIX)/man
++DOC_DIR = $(DESTDIR)/$(PREFIX)/doc/$(PROGNAME)-$(VERSION)
++SHARE_DIR = $(DESTDIR)/$(PREFIX)/share/$(PROGNAME)
++DATA_DIR = $(DESTDIR)/var/lib/linpopup
+ DATA_FILE = $(DATA_DIR)/messages.dat
+ 
