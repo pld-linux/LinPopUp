@@ -1,7 +1,7 @@
 Summary:	Linux enhanced port of winpopup
 Summary(pl):	Port winpopup'a pod Linux'a
 Name:		LinPopUp
-Version:	1.0.1
+Version:	1.0.2
 Release:	1
 Copyright:	GPL
 Group:		X11/Applications/Networking
@@ -60,9 +60,7 @@ install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1,%{_datadir}/linpopup}
 rm -f $RPM_BUILD_ROOT%{_mandir}/man1/linpopup.1
 echo ".so LinPopUp.1" >$RPM_BUILD_ROOT%{_mandir}/man1/linpopup.1
 
-#rm -f $RPM_BUILD_ROOT/usr/sahre/doc/%{name}-%{version}/{COPYING,INSTALL,MANUAL}
-
-gzip -9nf $RPM_BUILD_ROOT/usr/X11R6/man/man1/* 
+gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man1/* 
 
 %clean
 rm -rf $RPM_BUILD_ROOT
