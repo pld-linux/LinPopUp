@@ -2,12 +2,13 @@ Summary:	Linux enhanced port of winpopup
 Summary(pl):	Port winpopup'a pod Linux'a
 Name:		LinPopUp
 Version:	1.2.0
-Release:	2
+Release:	3
 License:	GPL
 Group:		X11/Applications/Networking
+Group(de):	X11/Applikationen/Netzwerkwesen
 Group(pl):	X11/Aplikacje/Sieciowe
 Source0:	ftp://littleigloo.org/pub/linpopup/%{name}-%{version}.src.tar.gz
-Patch0:		LinPopUp-prefix.patch
+Patch0:		%{name}-prefix.patch
 URL:		http://www.littleigloo.org/
 Icon:		LinPopUp.gif
 BuildRequires:	gtk+-devel
@@ -37,13 +38,14 @@ siê Winpopup'em.
 
 %build
 cd src
-%{__make} 	DESTDIR="" \
+%{__make} \
+	DESTDIR="" \
 	PREFIX="%{_prefix}" \
 	DOC_DIR="%{_defaultdocdir}/%{name}-%{version}" \
 	INSTALL_MANPATH='$(DESTDIR)%{_mandir}' \
 	DATA_DIR='$(DESTDIR)/var/lib/linpopup' \
-	CFLAGS="$RPM_OPT_FLAGS " \
-	LDFLAGS="-s"
+	CFLAGS="%{!?debug:$RPM_OPT_FLAGS}%{?debug:-O0 -g} " \
+	LDFLAGS="%{!?debug:-s}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -58,8 +60,6 @@ install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1,%{_datadir}/linpopup}
 
 rm -f $RPM_BUILD_ROOT%{_mandir}/man1/linpopup.1
 echo ".so LinPopUp.1" >$RPM_BUILD_ROOT%{_mandir}/man1/linpopup.1
-
-gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man1/* 
 
 %clean
 rm -rf $RPM_BUILD_ROOT
