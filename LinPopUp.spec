@@ -17,6 +17,7 @@ Requires:	samba
 BuildRoot:	/tmp/%{name}-%{version}-root
 
 %define _prefix /usr/X11R6
+%define _mandir /usr/X11R6/man
 
 %description
 LinPopUp is a Xwindow graphical port of Winpopup, running over Samba. It
@@ -61,7 +62,7 @@ echo ".so LinPopUp.1" >$RPM_BUILD_ROOT%{_mandir}/man1/linpopup.1
 
 #rm -f $RPM_BUILD_ROOT/usr/sahre/doc/%{name}-%{version}/{COPYING,INSTALL,MANUAL}
 
-gzip -9nf $RPM_BUILD_ROOT/usr/X11R6/share/man/man1/* 
+gzip -9nf $RPM_BUILD_ROOT/usr/X11R6/man/man1/* 
 
 %clean
 rm -rf $RPM_BUILD_ROOT
