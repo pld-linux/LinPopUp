@@ -5,7 +5,7 @@ Summary:	Linux enhanced port of winpopup
 Summary(pl):	Port programu winpopup pod Linuksa
 Name:		LinPopUp
 Version:	1.2.0
-Release:	5
+Release:	6
 License:	GPL
 Group:		X11/Applications/Networking
 Source0:	http://www.chez.com/littleigloo/files/%{name}-%{version}.src.tar.gz
@@ -53,7 +53,7 @@ cd src
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1,%{_datadir}/linpopup} \
-	$RPM_BUILD_ROOT{%{_pixmapsdir},%{_applnkdir}/Network/Communications}
+	$RPM_BUILD_ROOT{%{_pixmapsdir},%{_desktopdir}}
 
 %{__make} install -C src \
 	DESTDIR=$RPM_BUILD_ROOT \
@@ -62,7 +62,7 @@ install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1,%{_datadir}/linpopup} \
 	DATA_DIR='$(DESTDIR)/var/lib/linpopup' \
 	DOC_DIR="$RPM_BUILD_ROOT%{_defaultdocdir}/%{name}-%{version}"
 
-install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Network/Communications
+install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
 install %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}
 
 rm -f $RPM_BUILD_ROOT%{_mandir}/man1/linpopup.1
@@ -76,7 +76,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS BUGS ChangeLog INSTALL NEWS README THANKS TODO
 %attr(755,root,root) %{_bindir}/*
 %attr(666,nobody,nobody) /var/lib/linpopup/messages.dat
-%{_applnkdir}/Network/Communications/*
+%{_desktopdir}/*
 %{_pixmapsdir}/*
 %{_mandir}/man1/*
 %{_datadir}/LinPopUp
