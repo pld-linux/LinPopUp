@@ -1,5 +1,5 @@
 Summary:	Linux enhanced port of winpopup
-Summary(pl):	Port winpopup'a pod Linux'a
+Summary(pl):	Port programu winpopup pod Linuksa
 Name:		LinPopUp
 Version:	1.2.0
 Release:	3
@@ -20,17 +20,19 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 LinPopUp is a Xwindow graphical port of Winpopup, running over Samba.
-It permits to communicate with a windows computer that runs Winpopup,
+It permits to communicate with a Windows computer that runs Winpopup,
 sending or receiving message. (It also provides an alternative way to
 communicate between Linux computers that run Samba). Please note that
 LinPopUp is not only a port, as it includes several enhanced features.
 Also note that it requires to have Samba installed to be fully
-functionnal.
+functional.
 
 %description -l pl
-LinPopUp umo¿liwia wysy³anie krótkich kominikatów tekstowych przy
-wykorzystaniu Samby. Pozwala na komunikacjê z osobami pos³uguj±cymi
-siê Winpopup'em.
+LinPopUp umo¿liwia wysy³anie krótkich komunikatów tekstowych przy
+wykorzystaniu Samby spod X Window. Pozwala na komunikacjê z osobami
+pos³uguj±cymi siê Winpopupem pod Windows. (Jest tak¿e alternatywnym
+sposobem na komunikacjê miêdzy u¿ytkownikami Linuksa z Samb±.)
+LinPopUp nie jest tylko portem - zawiera te¿ parê rozszerzeñ.
 
 %prep
 %setup -q
