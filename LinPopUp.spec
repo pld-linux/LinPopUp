@@ -2,7 +2,7 @@ Summary:     Linux enhanced port of winpopup
 Summary(pl): Port winpopup'a pod Linux'a
 Name:        LinPopUp
 Version:     0.9.6
-Release:     1d
+Release:     2d
 Copyright:   GPL
 Group:       Networking
 Group(pl):   Sieæ
@@ -13,7 +13,7 @@ Requires:    samba
 Requires:    XFree86-libs
 Requires:    gtk+
 Requires:    glib
-BuildRoot:   /tmp/%{name}-%{version}-%{release}
+BuildRoot:   /tmp/%{name}-%{version}-root
 
 %description
 LinPopUp is a Xwindow graphical port of Winpopup, running over Samba. It
@@ -33,7 +33,9 @@ Winpopup'em.
 
 %build
 cd src
-make DESTDIR=/usr/X11R6 SHARE_PATH=/var/lib/linpopup/ CFLAGS="$RPM_OPT_FLAGS "
+
+CFLAGS="$RPM_OPT_FLAGS" LDFLAGS=-s
+make DESTDIR=/usr/X11R6 SHARE_PATH=/var/lib/linpopup/ 
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -51,22 +53,30 @@ rm -f $RPM_BUILD_ROOT/usr/X11R6/man/man1/linpopup.1
 echo ".so LinPopUp.1" >$RPM_BUILD_ROOT/usr/X11R6/man/man1/linpopup.1
 
 gzip -9nf $RPM_BUILD_ROOT/usr/X11R6/man/man1/*
+gzip -9nf AUTHORS BUGS NEWS THANKS docs/*
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS BUGS NEWS THANKS docs/*
-%attr(755,root,root) /usr/X11R6/bin/*
-
-%attr(644,root, man) /usr/X11R6/man/man1/*
-
+%doc AUTHORS.gz BUGS.gz NEWS.gz THANKS.gz docs/*
 %dir /var/lib/linpopup
-/var/lib/linpopup/misc
+
+%attr(755,root,root) /usr/X11R6/bin/*
+%attr(644,root, man) /usr/X11R6/man/man1/*
 %attr(666,nobody,nobody) /var/lib/linpopup/messages.dat
 
+/var/lib/linpopup/misc
+
 %changelog
+* Tue Feb  9 1999 Micha³ Kuratczyk <kurkens@polbox.com>
+  [0.9.6-2d]
+- added gzipping documentation
+- sloted BuildRoot into PLD standard
+- added LDFLAGS=-s
+- cosmetic changes
+
 * Sat Jan 22 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [0.9.6-1d]
 - added "rm -rf $RPM_BUILD_ROOT" on top %install,
