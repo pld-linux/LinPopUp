@@ -5,8 +5,6 @@ Version:	1.2.0
 Release:	4
 License:	GPL
 Group:		X11/Applications/Networking
-Group(de):	X11/Applikationen/Netzwerkwesen
-Group(pl):	X11/Aplikacje/Sieciowe
 Source0:	ftp://littleigloo.org/pub/linpopup/%{name}-%{version}.src.tar.gz
 Source1:	%{name}.desktop
 Source2:	%{name}.png
