@@ -5,7 +5,7 @@ Summary:	Linux enhanced port of winpopup
 Summary(pl):	Port programu winpopup pod Linuksa
 Name:		LinPopUp
 Version:	1.2.0
-Release:	6
+Release:	7
 License:	GPL
 Group:		X11/Applications/Networking
 Source0:	http://www.chez.com/littleigloo/files/%{name}-%{version}.src.tar.gz
