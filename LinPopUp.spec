@@ -37,7 +37,7 @@ siê Winpopup'em.
 
 %build
 cd src
-make 	DESTDIR="" \
+%{__make} 	DESTDIR="" \
 	PREFIX="%{_prefix}" \
 	DOC_DIR="%{_defaultdocdir}/%{name}-%{version}" \
 	INSTALL_MANPATH='$(DESTDIR)%{_mandir}' \
