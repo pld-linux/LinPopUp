@@ -57,7 +57,7 @@ gzip -9nf $RPM_BUILD_ROOT/usr/X11R6/man/man1/* \
 	$RPM_BUILD_ROOT/usr/doc/%{name}-%{version}/*
 
 %clean
-#rm -rf $RPM_BUILD_ROOT
+rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
