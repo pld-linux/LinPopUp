@@ -33,9 +33,14 @@ Winpopup'em.
 
 %build
 cd src
+make \
+	DESTDIR=/usr/X11R6 \
+	SHARE_PATH=/var/lib/linpopup/ \
+	CFLAGS="$RPM_OPT_FLAGS " \
+	LDFLAGS="-s"
 
-CFLAGS="$RPM_OPT_FLAGS" LDFLAGS=-s
-make DESTDIR=/usr/X11R6 SHARE_PATH=/var/lib/linpopup/ 
+#CFLAGS="$RPM_OPT_FLAGS" LDFLAGS=-s
+#make DESTDIR=/usr/X11R6 SHARE_PATH=/var/lib/linpopup/ 
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -43,17 +48,19 @@ install -d $RPM_BUILD_ROOT/{usr/X11R6/{bin,man/man1},var/lib/linpopup}
 
 cd src
 make install \
-	DESTDIR=$RPM_BUILD_ROOT/usr/X11R6
+	DESTDIR=$RPM_BUILD_ROOT/usr/X11R6 \
 	SHARE_PATH=$RPM_BUILD_ROOT/var/lib/linpopup
+cd ..
 
 rm -rf $RPM_BUILD_ROOT/var/lib/linpopup/docs
-ln -s $RPM_BUILD_ROOT/usr/doc/%{name}-%{version} $RPM_BUILD_ROOT/var/lib/linpopup/docs
+ln -s /usr/doc/%{name}-%{version} $RPM_BUILD_ROOT/var/lib/linpopup/docs
 
 rm -f $RPM_BUILD_ROOT/usr/X11R6/man/man1/linpopup.1
 echo ".so LinPopUp.1" >$RPM_BUILD_ROOT/usr/X11R6/man/man1/linpopup.1
 
 gzip -9nf $RPM_BUILD_ROOT/usr/X11R6/man/man1/*
-gzip -9nf AUTHORS BUGS NEWS THANKS docs/*
+gzip -9nf AUTHORS BUGS NEWS THANKS 
+# docs/*
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -82,5 +89,5 @@ rm -rf $RPM_BUILD_ROOT
 - added "rm -rf $RPM_BUILD_ROOT" on top %install,
 - gzipping instead bzipping2 man pages,
 
-* Sat Jan 23 1999 Artur Frysiak <wiget@usa.net>
+* Sat Jan 21 1999 Artur Frysiak <wiget@usa.net>
 - initial release
