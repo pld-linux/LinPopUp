@@ -7,5 +7,5 @@ Icon=LinPopUp.png
 Exec=LinPopUp
 Terminal=false
 Type=Application
-Categories=Network;InstantMessaging;
+Categories=GTK;Network;InstantMessaging;
 # vi: encoding=utf-8
