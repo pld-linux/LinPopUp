@@ -47,22 +47,25 @@ install -d -m0755 $RPM_BUILD_ROOT/var/lib/linpopup
 
 make DESTDIR=$RPM_BUILD_ROOT/usr/X11R6 SHARE_PATH=$RPM_BUILD_ROOT/var/lib/linpopup install
 
-touch $RPM_BUILD_ROOT/var/lib/linpopup/messages.dat
+rm -rf $RPM_BUILD_ROOT/var/lib/linpopup/docs
+ln -s $RPM_BUILD_ROOT/usr/doc/%{name}-%{version} $RPM_BUILD_ROOT/var/lib/linpopup/docs
 
 rm -f $RPM_BUILD_ROOT/usr/X11R6/man/man1/linpopup.1
 echo ".so LinPopUp.1" >$RPM_BUILD_ROOT/usr/X11R6/man/man1/linpopup.1
 
 bzip2 -9 $RPM_BUILD_ROOT/usr/X11R6/man/man1/*
 
+%clean
+rm -rf $RPM_BUILD_ROOT
+
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS BUGS NEWS THANKS docs/* 
 %attr(755,root,root) /usr/X11R6/bin/*
 %attr(644,root, man) /usr/X11R6/man/man1/*
+%dir /var/lib/linpopup
+/var/lib/linpopup/misc
 %attr(666,nobody,nobody) /var/lib/linpopup/messages.dat
-
-%clean
-rm -rf $RPM_BUILD_ROOT
 
 %changelog
 * Sat Jan 23 1999 Artur Frysiak <wiget@usa.net>
