@@ -1,17 +1,17 @@
-Summary:     Linux enhanced port of winpopup
-Summary(pl): Port winpopup'a pod Linux'a
-Name:        LinPopUp
-Version:     0.9.9
-Release:     1
-Copyright:   GPL
-Group:       Networking
-Group(pl):   Sieæ
-Source:      ftp://littleigloo.org/pub/linpopup/%{name}-%{version}.src.tar.bz2
-Patch:	     LinPopUp-prefix.patch
-URL:         http://www.littleigloo.org/
-Icon:        linpopup.gif
-Requires:    samba
-BuildRoot:   /tmp/%{name}-%{version}-root
+Summary:	Linux enhanced port of winpopup
+Summary(pl):	Port winpopup'a pod Linux'a
+Name:		LinPopUp
+Version:	0.9.9
+Release:	1
+Copyright:	GPL
+Group:		X11/Applications/Networking
+Group(pl):	X11/Aplikacje/Sieciowe
+Source:		ftp://littleigloo.org/pub/linpopup/%{name}-%{version}.src.tar.bz2
+Patch:		LinPopUp-prefix.patch
+URL:		http://www.littleigloo.org/
+Icon:		linpopup.gif
+Requires:	samba
+BuildRoot:	/tmp/%{name}-%{version}-root
 
 %description
 LinPopUp is a Xwindow graphical port of Winpopup, running over Samba. It
@@ -43,19 +43,18 @@ make \
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT/{usr/X11R6/{bin,man/man1,share},var/lib/linpopup}
 
-cd src
-make install \
+(cd src; make install \
 	DESTDIR="$RPM_BUILD_ROOT" \
 	PREFIX="/usr/X11R6" \
-	DOC_DIR="$RPM_BUILD_ROOT//usr/doc/%{name}-%{version}"
-cd ..
+	DOC_DIR="$RPM_BUILD_ROOT//usr/doc/%{name}-%{version}" )
 
 rm -f $RPM_BUILD_ROOT/usr/X11R6/man/man1/linpopup.1
 echo ".so LinPopUp.1" >$RPM_BUILD_ROOT/usr/X11R6/man/man1/linpopup.1
 
 rm -f $RPM_BUILD_ROOT/usr/doc/%{name}-%{version}/{COPYING,INSTALL,MANUAL}
-gzip -9nf $RPM_BUILD_ROOT/usr/X11R6/man/man1/*
-gzip -9nf $RPM_BUILD_ROOT/usr/doc/%{name}-%{version}/*
+
+gzip -9nf $RPM_BUILD_ROOT/usr/X11R6/man/man1/* \
+	$RPM_BUILD_ROOT/usr/doc/%{name}-%{version}/*
 
 %clean
 #rm -rf $RPM_BUILD_ROOT
