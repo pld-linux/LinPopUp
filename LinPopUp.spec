@@ -1,3 +1,6 @@
+# TODO:
+# - evil permissions on /var/lib/linpopup/messages.dat
+# - nobody user MUST NOT own anything
 Summary:	Linux enhanced port of winpopup
 Summary(pl):	Port programu winpopup pod Linuksa
 Name:		LinPopUp
@@ -15,7 +18,6 @@ URL:		http://www.littleigloo.org/software_002.php3
 BuildRequires:	gtk+-devel
 Requires:	samba
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
 
 %description
 LinPopUp is a Xwindow graphical port of Winpopup, running over Samba.
@@ -53,14 +55,12 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1,%{_datadir}/linpopup} \
 	$RPM_BUILD_ROOT{%{_pixmapsdir},%{_applnkdir}/Network/Communications}
 
-cd src
-make install \
+%{__make} install -C src \
 	DESTDIR=$RPM_BUILD_ROOT \
 	PREFIX="%{_prefix}" \
 	INSTALL_MANPATH='$(DESTDIR)%{_mandir}' \
 	DATA_DIR='$(DESTDIR)/var/lib/linpopup' \
 	DOC_DIR="$RPM_BUILD_ROOT%{_defaultdocdir}/%{name}-%{version}"
-cd ..
 
 install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Network/Communications
 install %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}
