@@ -10,9 +10,7 @@ Source0:	ftp://littleigloo.org/pub/linpopup/%{name}-%{version}.src.tar.gz
 Patch0:		LinPopUp-prefix.patch
 URL:		http://www.littleigloo.org/
 Icon:		LinPopUp.gif
-BuildRequires:	glib-devel
 BuildRequires:	gtk+-devel
-BuildRequires:	XFree86-devel
 Requires:	samba
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
