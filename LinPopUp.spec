@@ -44,8 +44,8 @@ cd src
 	DOC_DIR="%{_defaultdocdir}/%{name}-%{version}" \
 	INSTALL_MANPATH='$(DESTDIR)%{_mandir}' \
 	DATA_DIR='$(DESTDIR)/var/lib/linpopup' \
-	CFLAGS="%{!?debug:$RPM_OPT_FLAGS}%{?debug:-O0 -g} " \
-	LDFLAGS="%{!?debug:-s}"
+	CFLAGS="%{rpmcflags} " \
+	LDFLAGS="%{rpmldflags}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
