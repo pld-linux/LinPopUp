@@ -1,13 +1,13 @@
 Summary:	Linux enhanced port of winpopup
 Summary(pl):	Port winpopup'a pod Linux'a
 Name:		LinPopUp
-Version:	1.1.1
+Version:	1.2.0
 Release:	1
-Copyright:	GPL
+License:	GPL
 Group:		X11/Applications/Networking
 Group(pl):	X11/Aplikacje/Sieciowe
-Source:		ftp://littleigloo.org/pub/linpopup/%{name}-%{version}.src.tar.gz
-Patch:		LinPopUp-prefix.patch
+Source0:	ftp://littleigloo.org/pub/linpopup/%{name}-%{version}.src.tar.gz
+Patch0:		LinPopUp-prefix.patch
 URL:		http://www.littleigloo.org/
 Icon:		LinPopUp.gif
 BuildRequires:	glib-devel
@@ -16,8 +16,8 @@ BuildRequires:	XFree86-devel
 Requires:	samba
 BuildRoot:	/tmp/%{name}-%{version}-root
 
-%define _prefix /usr/X11R6
-%define _mandir /usr/X11R6/man
+%define		_prefix		/usr/X11R6
+%define		_mandir		%{_prefix}/man
 
 %description
 LinPopUp is a Xwindow graphical port of Winpopup, running over Samba. It
