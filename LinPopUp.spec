@@ -9,7 +9,7 @@ Group(pl):	X11/Aplikacje/Sieciowe
 Source:		ftp://littleigloo.org/pub/linpopup/%{name}-%{version}.src.tar.bz2
 Patch:		LinPopUp-prefix.patch
 URL:		http://www.littleigloo.org/
-Icon:		linpopup.gif
+Icon:		LinPopUp.gif
 Requires:	samba
 BuildRoot:	/tmp/%{name}-%{version}-root
 
