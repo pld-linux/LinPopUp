@@ -5,11 +5,11 @@ Version:	1.2.0
 Release:	4
 License:	GPL
 Group:		X11/Applications/Networking
-Source0:	ftp://littleigloo.org/pub/linpopup/%{name}-%{version}.src.tar.gz
+Source0:	http://www.chez.com/littleigloo/files/%{name}-%{version}.src.tar.gz
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 Patch0:		%{name}-prefix.patch
-URL:		http://www.littleigloo.org/
+URL:		http://www.littleigloo.org/software_002.php3
 Icon:		LinPopUp.gif
 BuildRequires:	gtk+-devel
 Requires:	samba
