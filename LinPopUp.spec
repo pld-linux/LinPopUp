@@ -67,14 +67,13 @@ install %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}
 rm -f $RPM_BUILD_ROOT%{_mandir}/man1/linpopup.1
 echo ".so LinPopUp.1" >$RPM_BUILD_ROOT%{_mandir}/man1/linpopup.1
 
-gzip -9nf AUTHORS BUGS ChangeLog INSTALL NEWS README THANKS TODO
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc *.gz
+%doc AUTHORS BUGS ChangeLog INSTALL NEWS README THANKS TODO
 %attr(755,root,root) %{_bindir}/*
 %attr(666,nobody,nobody) /var/lib/linpopup/messages.dat
 %{_applnkdir}/Network/Communications/*
