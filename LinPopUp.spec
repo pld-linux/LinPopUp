@@ -6,6 +6,7 @@ Release:	4
 License:	GPL
 Group:		X11/Applications/Networking
 Source0:	http://www.chez.com/littleigloo/files/%{name}-%{version}.src.tar.gz
+# Source0-md5:	26503ac44971e334cbbb0a79dd796d93
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 Patch0:		%{name}-prefix.patch
