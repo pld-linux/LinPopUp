@@ -1,12 +1,12 @@
 Summary:	Linux enhanced port of winpopup
 Summary(pl):	Port winpopup'a pod Linux'a
 Name:		LinPopUp
-Version:	1.0.2
+Version:	1.1.1
 Release:	1
 Copyright:	GPL
 Group:		X11/Applications/Networking
 Group(pl):	X11/Aplikacje/Sieciowe
-Source:		ftp://littleigloo.org/pub/linpopup/%{name}-%{version}.src.tar.bz2
+Source:		ftp://littleigloo.org/pub/linpopup/%{name}-%{version}.src.tar.gz
 Patch:		LinPopUp-prefix.patch
 URL:		http://www.littleigloo.org/
 Icon:		LinPopUp.gif
