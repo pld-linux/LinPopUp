@@ -1,7 +1,7 @@
 Summary:	Linux enhanced port of winpopup
 Summary(pl):	Port winpopup'a pod Linux'a
 Name:		LinPopUp
-Version:	0.9.9
+Version:	1.0.0
 Release:	1
 Copyright:	GPL
 Group:		X11/Applications/Networking
@@ -10,6 +10,9 @@ Source:		ftp://littleigloo.org/pub/linpopup/%{name}-%{version}.src.tar.bz2
 Patch:		LinPopUp-prefix.patch
 URL:		http://www.littleigloo.org/
 Icon:		LinPopUp.gif
+BuildPrereq:	glib-devel
+BuildPrereq:	gtk+-devel
+BuildPrereq:	XFree86-devel
 Requires:	samba
 BuildRoot:	/tmp/%{name}-%{version}-root
 
@@ -35,26 +38,30 @@ cd src
 make \
 	DESTDIR="" \
 	PREFIX="/usr/X11R6" \
-	DOC_DIR="/usr/doc/%{name}-%{version}"
+	DOC_DIR="/usr/share/doc/%{name}-%{version}" \
+	INSTALL_MANPATH='$(DESTDIR)/$(PREFIX)/share/man' \
+	DATA_DIR='$(DESTDIR)/var/state/linpopup' \
 	CFLAGS="$RPM_OPT_FLAGS " \
 	LDFLAGS="-s"
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT/{usr/X11R6/{bin,man/man1,share},var/lib/linpopup}
+install -d $RPM_BUILD_ROOT/{usr/X11R6/{bin,share/{man/man1,linpopup}},var/state/linpopup}
 
 (cd src; make install \
 	DESTDIR="$RPM_BUILD_ROOT" \
 	PREFIX="/usr/X11R6" \
-	DOC_DIR="$RPM_BUILD_ROOT//usr/doc/%{name}-%{version}" )
+	INSTALL_MANPATH='$(DESTDIR)/$(PREFIX)/share/man' \
+	DATA_DIR='$(DESTDIR)/var/state/linpopup' \
+	DOC_DIR="$RPM_BUILD_ROOT//usr/share/doc/%{name}-%{version}" )
 
-rm -f $RPM_BUILD_ROOT/usr/X11R6/man/man1/linpopup.1
-echo ".so LinPopUp.1" >$RPM_BUILD_ROOT/usr/X11R6/man/man1/linpopup.1
+rm -f $RPM_BUILD_ROOT/usr/X11R6/share/man/man1/linpopup.1
+echo ".so LinPopUp.1" >$RPM_BUILD_ROOT/usr/X11R6/share//man/man1/linpopup.1
 
-rm -f $RPM_BUILD_ROOT/usr/doc/%{name}-%{version}/{COPYING,INSTALL,MANUAL}
+#rm -f $RPM_BUILD_ROOT/usr/sahre/doc/%{name}-%{version}/{COPYING,INSTALL,MANUAL}
 
-gzip -9nf $RPM_BUILD_ROOT/usr/X11R6/man/man1/* \
-	$RPM_BUILD_ROOT/usr/doc/%{name}-%{version}/*
+gzip -9nf $RPM_BUILD_ROOT/usr/X11R6/share/man/man1/* 
+#	$RPM_BUILD_ROOT/usr/share/doc/%{name}-%{version}/*
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -62,13 +69,13 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 #%doc AUTHORS.gz BUGS.gz NEWS.gz THANKS.gz docs/*
-%doc /usr/doc/%{name}-%{version}
+%doc /usr/share/doc/%{name}-%{version}
 
-%dir /var/lib/linpopup
+%dir /var/state/linpopup
 
 %attr(755,root,root) /usr/X11R6/bin/*
-%attr(666,nobody,nobody) /var/lib/linpopup/messages.dat
-/usr/X11R6/man/man1/*
+%attr(666,nobody,nobody) /var/state/linpopup/messages.dat
+/usr/X11R6/share/man/man1/*
 /usr/X11R6/share/LinPopUp
 
 %changelog
