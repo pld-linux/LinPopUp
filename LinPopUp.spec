@@ -10,8 +10,8 @@ Source0:	http://www.chez.com/littleigloo/files/%{name}-%{version}.src.tar.gz
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 Patch0:		%{name}-prefix.patch
-URL:		http://www.littleigloo.org/software_002.php3
 Icon:		LinPopUp.gif
+URL:		http://www.littleigloo.org/software_002.php3
 BuildRequires:	gtk+-devel
 Requires:	samba
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -53,19 +53,20 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1,%{_datadir}/linpopup} \
 	$RPM_BUILD_ROOT{%{_pixmapsdir},%{_applnkdir}/Network/Communications}
 
-(cd src; make install \
-	DESTDIR="$RPM_BUILD_ROOT" \
+cd src
+make install \
+	DESTDIR=$RPM_BUILD_ROOT \
 	PREFIX="%{_prefix}" \
 	INSTALL_MANPATH='$(DESTDIR)%{_mandir}' \
 	DATA_DIR='$(DESTDIR)/var/lib/linpopup' \
-	DOC_DIR="$RPM_BUILD_ROOT%{_defaultdocdir}/%{name}-%{version}" )
+	DOC_DIR="$RPM_BUILD_ROOT%{_defaultdocdir}/%{name}-%{version}"
+cd ..
 
 install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Network/Communications
 install %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}
 
 rm -f $RPM_BUILD_ROOT%{_mandir}/man1/linpopup.1
 echo ".so LinPopUp.1" >$RPM_BUILD_ROOT%{_mandir}/man1/linpopup.1
-
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -79,5 +80,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_pixmapsdir}/*
 %{_mandir}/man1/*
 %{_datadir}/LinPopUp
-
 %dir /var/lib/linpopup
