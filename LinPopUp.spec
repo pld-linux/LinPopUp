@@ -13,7 +13,6 @@ Source0:	http://www.chez.com/littleigloo/files/%{name}-%{version}.src.tar.gz
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 Patch0:		%{name}-prefix.patch
-Icon:		LinPopUp.gif
 URL:		http://www.littleigloo.org/software_002.php3
 BuildRequires:	gtk+-devel
 Requires:	samba
