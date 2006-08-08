@@ -36,7 +36,7 @@ LinPopUp nie jest tylko portem - zawiera te¿ parê rozszerzeñ.
 
 %prep
 %setup -q
-%patch -p1
+%patch0 -p1
 
 %build
 cd src
