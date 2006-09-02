@@ -43,7 +43,7 @@ cd src
 %{__make} \
 	DESTDIR="" \
 	PREFIX="%{_prefix}" \
-	DOC_DIR="%{_defaultdocdir}/%{name}-%{version}" \
+	DOC_DIR="%{_docdir}/%{name}-%{version}" \
 	INSTALL_MANPATH='$(DESTDIR)%{_mandir}' \
 	DATA_DIR='$(DESTDIR)/var/lib/linpopup' \
 	CFLAGS="%{rpmcflags} " \
@@ -59,7 +59,7 @@ install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1,%{_datadir}/linpopup} \
 	PREFIX="%{_prefix}" \
 	INSTALL_MANPATH='$(DESTDIR)%{_mandir}' \
 	DATA_DIR='$(DESTDIR)/var/lib/linpopup' \
-	DOC_DIR="$RPM_BUILD_ROOT%{_defaultdocdir}/%{name}-%{version}"
+	DOC_DIR="$RPM_BUILD_ROOT%{_docdir}/%{name}-%{version}"
 
 install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
 install %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}
@@ -74,7 +74,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS BUGS ChangeLog INSTALL NEWS README THANKS TODO
 %attr(755,root,root) %{_bindir}/*
-%attr(666,nobody,nobody) /var/lib/linpopup/messages.dat
+%attr(666,nobody,nobody) /var/lib/linpopup/messages.dat # FIXME nobody user/group can't own files! -adapter.awk
 %{_desktopdir}/*
 %{_pixmapsdir}/*
 %{_mandir}/man1/*
