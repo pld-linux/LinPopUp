@@ -75,7 +75,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS BUGS ChangeLog INSTALL NEWS README THANKS TODO
 %attr(755,root,root) %{_bindir}/*
 %attr(666,nobody,nobody) /var/lib/linpopup/messages.dat # FIXME nobody user/group can't own files! -adapter.awk
-%{_desktopdir}/*
+%{_desktopdir}/*.desktop
 %{_pixmapsdir}/*
 %{_mandir}/man1/*
 %{_datadir}/LinPopUp
