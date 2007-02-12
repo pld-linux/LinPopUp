@@ -2,7 +2,7 @@
 # - evil permissions on /var/lib/linpopup/messages.dat
 # - nobody user MUST NOT own anything
 Summary:	Linux enhanced port of winpopup
-Summary(pl):	Port programu winpopup pod Linuksa
+Summary(pl.UTF-8):   Port programu winpopup pod Linuksa
 Name:		LinPopUp
 Version:	1.2.0
 Release:	7
@@ -27,12 +27,12 @@ LinPopUp is not only a port, as it includes several enhanced features.
 Also note that it requires to have Samba installed to be fully
 functional.
 
-%description -l pl
-LinPopUp umo¿liwia wysy³anie krótkich komunikatów tekstowych przy
-wykorzystaniu Samby spod X Window. Pozwala na komunikacjê z osobami
-pos³uguj±cymi siê Winpopupem pod Windows. (Jest tak¿e alternatywnym
-sposobem na komunikacjê miêdzy u¿ytkownikami Linuksa z Samb±.)
-LinPopUp nie jest tylko portem - zawiera te¿ parê rozszerzeñ.
+%description -l pl.UTF-8
+LinPopUp umoÅ¼liwia wysyÅ‚anie krÃ³tkich komunikatÃ³w tekstowych przy
+wykorzystaniu Samby spod X Window. Pozwala na komunikacjÄ™ z osobami
+posÅ‚ugujÄ…cymi siÄ™ Winpopupem pod Windows. (Jest takÅ¼e alternatywnym
+sposobem na komunikacjÄ™ miÄ™dzy uÅ¼ytkownikami Linuksa z SambÄ….)
+LinPopUp nie jest tylko portem - zawiera teÅ¼ parÄ™ rozszerzeÅ„.
 
 %prep
 %setup -q
