@@ -2,7 +2,7 @@
 # - evil permissions on /var/lib/linpopup/messages.dat
 # - nobody user MUST NOT own anything
 Summary:	Linux enhanced port of winpopup
-Summary(pl.UTF-8):   Port programu winpopup pod Linuksa
+Summary(pl.UTF-8):	Port programu winpopup pod Linuksa
 Name:		LinPopUp
 Version:	1.2.0
 Release:	7
