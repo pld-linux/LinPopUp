@@ -1,9 +1,8 @@
 [Desktop Entry]
-Encoding=UTF-8
 Name=LinPopUp
 Comment=Linux enhanced port of winpopup
 Comment[pl]=Port programu winpopup pod Linuxa
-Icon=LinPopUp.png
+Icon=LinPopUp
 Exec=LinPopUp
 Terminal=false
 Type=Application
